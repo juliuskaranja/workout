@@ -9,9 +9,18 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {LoginPage} from "../pages/login/login";
 import {RegisterPage} from "../pages/register/register";
+import {PopOverPage} from "../pages/pop-over/pop-over";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {ProfilePage} from "../pages/profile/profile";
+import { PeopleServiceProvider } from '../providers/people-service/people-service';
+import {MealPage} from "../pages/meal/meal";
+import {HttpClientModule} from "@angular/common/http";
+import { RestProvider } from '../providers/rest/rest';
+import { LoginRestProvider } from '../providers/login-rest/login-rest';
+import { RegisterRestProvider } from '../providers/register-rest/register-rest';
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -21,11 +30,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    PopOverPage,
+    ProfilePage,
+    MealPage,
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+      HttpClientModule,
+    IonicModule.forRoot(MyApp),
+      IonicStorageModule.forRoot({name: '__mydb',
+    driverOrder: ['indexeddb', 'sqlite', 'websql']
+})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,12 +52,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    PopOverPage,
+    ProfilePage,
+    MealPage,
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PeopleServiceProvider,
+    RestProvider,
+    LoginRestProvider,
+    RegisterRestProvider
   ]
 })
 export class AppModule {}

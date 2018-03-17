@@ -17,49 +17,49 @@
 
   <ion-list style="padding: auto">
 
-    <form (submit)="registerUser(user)">
+    <form [formGroup]="registerForm">
       <ion-item>
         <ion-label stacked>First Name</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input formControlName="first_name" type="text"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Surname</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input formControlName="surname" type="text"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>DOB</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+        <ion-datetime formControlName="dob" displayFormat="MM/DD/YYYY"></ion-datetime>
       </ion-item>
 
 
       <ion-item>
         <ion-label>Gender</ion-label>
-        <ion-select>
-          <ion-option value="f">Female</ion-option>
-          <ion-option value="m">Male</ion-option>
+        <ion-select  formControlName="gender" >
+          <ion-option value="female">Female</ion-option>
+          <ion-option value="male">Male</ion-option>
         </ion-select>
       </ion-item>
 
 
       <ion-item>
         <ion-label stacked>Email</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input formControlName="email" type="text"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Confirm Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input formControlName="password_confirmation" type="password"></ion-input>
       </ion-item>
 
       <ion-item>
-        <button ion-button full>Register </button>
+        <button ion-button full (click)="registerUser()">Register </button>
       </ion-item>
 
       <ion-item>

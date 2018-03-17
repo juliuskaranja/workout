@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {RegisterPage} from "../register/register";
 import { ToastController } from 'ionic-angular';
-import {HomePage} from "../home/home";
+/*import {HomePage} from "../home/home";*/
 import {TabsPage} from "../tabs/tabs";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {LoginRestProvider} from "../../providers/login-rest/login-rest";
+import {Storage} from "@ionic/storage";
+
 
 /**
  * Generated class for the LoginPage page.
@@ -20,18 +24,51 @@ import {TabsPage} from "../tabs/tabs";
 export class LoginPage {
 
   user: any;
+  loginForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public toastCtrl: ToastController,public formBuilder: FormBuilder,
+              public loginProvider: LoginRestProvider,
+              public storage: Storage) {
 
     this.user = [];
-    // this.user.name = '';
-    // this.user.username = '';
-    // this.user.password = '';
+
+      this.loginForm = formBuilder.group({
+        username: [''],
+        password: [''],
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
+
+    submitUserLoginForm(){
+
+      this.loginUser(this.loginForm.value);
+
+    }
+
+    loginUser(data){
+
+
+      this.loginProvider.loginUser(data).then(data=>{
+
+          this.presentToast(data['message']);
+
+          if(data['status'] === 'ERROR')
+            {
+              return;
+            }
+
+            this.storage.set('user',data['data']);
+
+          console.info(this.storage.get('user'));
+
+            this.navCtrl.setRoot(TabsPage);
+      });
+
+    }
 
 
       presentToast(message) {
@@ -48,17 +85,6 @@ export class LoginPage {
       toast.present();
   }
 
-
-    loginUser(user){
-
-      console.info(user);
-    //login the user.
-        this.presentToast('Successfully logged in.');
-
-        this.navCtrl.setRoot(TabsPage);
-
-
-    }
 
     goToRegisterUser(){
     //load forgot register page

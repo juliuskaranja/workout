@@ -7,8 +7,11 @@
 <ion-header>
 
   <ion-navbar>
+    <!--<ion-buttons left ion-button icon-only (click)="openSideMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </ion-buttons>-->
     <ion-buttons left>
-      <button ion-button icon-only (click)="openSideMenu()">
+      <button ion-button icon-only (click)="showPopOverPage($event)">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
@@ -18,7 +21,8 @@
     </button>-->
 
     <ion-title>
-      Home
+      <!--Shahenshah Sheikh-->
+      {{user['first_name']}} {{user['surname']}}
     </ion-title>
 
     <!--<ion-buttons end>
@@ -31,13 +35,59 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  
+
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/profile.png">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>Registered</p>
+      <ion-note end>11h ago</ion-note>
+    </ion-item>
+
+    <img src="assets/imgs/profile.png">
+
+    <ion-card-content>
+      <p>I have been practising using the mobile app.
+      I feel great!
+      </p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+
+  <!--  <p>
+    This is a great app to guide you on work out exercises.
+  </p>
+
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    Socialize with friends and compete on completion of work out exercise
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    &lt;!&ndash;Take a look at the <code>src/pages/</code> directory to add or change tabs,
+    update any existing page or create new pages.&ndash;&gt;
+  </p>-->
 </ion-content>
