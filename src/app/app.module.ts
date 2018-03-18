@@ -21,6 +21,8 @@ import { RestProvider } from '../providers/rest/rest';
 import { LoginRestProvider } from '../providers/login-rest/login-rest';
 import { RegisterRestProvider } from '../providers/register-rest/register-rest';
 import {IonicStorageModule} from "@ionic/storage";
+import { ProfileRestProvider } from '../providers/profile-rest/profile-rest';
+import { ListPostsProvidersProvider } from '../providers/list-posts-providers/list-posts-providers';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {IonicStorageModule} from "@ionic/storage";
     PopOverPage,
     ProfilePage,
     MealPage,
+    ProfilePage,
 
   ],
   imports: [
@@ -56,6 +59,7 @@ import {IonicStorageModule} from "@ionic/storage";
     PopOverPage,
     ProfilePage,
     MealPage,
+    ProfilePage,
 
   ],
   providers: [
@@ -65,7 +69,9 @@ import {IonicStorageModule} from "@ionic/storage";
     PeopleServiceProvider,
     RestProvider,
     LoginRestProvider,
-    RegisterRestProvider
+    RegisterRestProvider,
+    ProfileRestProvider,
+    ListPostsProvidersProvider,
   ]
 })
 export class AppModule {}

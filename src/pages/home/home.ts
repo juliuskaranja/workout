@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {NavController, PopoverController} from 'ionic-angular';
 import {PopOverPage} from "../pop-over/pop-over";
-import 'rxjs/add/operator/map';
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
+import {ListPostsProvidersProvider} from "../../providers/list-posts-providers/list-posts-providers";
 
 @Component({
   selector: 'page-home',
@@ -20,12 +20,22 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public popCntr: PopoverController,
               public restProvider: RestProvider,
-              public storage: Storage) {
-
-      // this.getUsers();
-      // this.saveUser();
+              public storage: Storage,
+              public listPosts: ListPostsProvidersProvider) {
+      //get user profile..
       this.getUserProfile();
+
+      //load posts
+      this.getPosts();
   }
+
+    getPosts()
+    {
+        this.listPosts.loadPosts().then(data=>{
+           this.posts = data['data'];
+        });
+
+    }
 
     getUserProfile(){
       this.user = this.storage.get('user');

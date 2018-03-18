@@ -21,8 +21,8 @@
     </button>-->
 
     <ion-title>
-      <!--Shahenshah Sheikh-->
-      {{user['first_name']}} {{user['surname']}}
+      Shahenshah Sheikh
+      <!--{{user['first_name']}} {{user['surname']}}-->
     </ion-title>
 
     <!--<ion-buttons end>
@@ -35,7 +35,38 @@
 </ion-header>
 
 <ion-content padding>
-  
+
+
+  <ion-card *ngFor="let post of posts; let i=index;">
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="'assets/imgs/profile.png'">
+      </ion-avatar>
+      <h2>{{post['user']['first_name']}} {{post['user']['surname']}} </h2>
+      <p>Registered</p>
+    </ion-item>
+
+    <img [src]="post['photo_url']">
+
+    <ion-card-content>
+      <p>
+        {{post['description']}}
+      </p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col right text-right>
+        <ion-note>
+          {{post['created_at']}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+<!--
+
 
   <ion-card>
 
@@ -78,6 +109,7 @@
 
   </ion-card>
 
+-->
 
   <!--  <p>
     This is a great app to guide you on work out exercises.

@@ -14,8 +14,8 @@ export class LoginRestProvider {
 
   constructor(public http: HttpClient) {
 
-     this.baseUrl =  'http://julius.collegeassignment.net';
-     // this.baseUrl =  'http://dev.com/personal/web/workout/public';
+     // this.baseUrl =  'http://julius.collegeassignment.net';
+     this.baseUrl =  'http://dev.com/personal/web/workout/public';
   }
 
   loginUser(data){

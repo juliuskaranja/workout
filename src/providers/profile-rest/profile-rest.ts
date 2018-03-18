@@ -2,38 +2,27 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
-  Generated class for the RestProvider provider.
+  Generated class for the ProfileRestProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class RestProvider {
+export class ProfileRestProvider {
 
-    apiUrl: any;
+  baseUrl: any;
 
   constructor(public http: HttpClient) {
 
-      this.apiUrl = 'https://jsonplaceholder.typicode.com';
+      // this.baseUrl =  'http://julius.collegeassignment.net';
+      this.baseUrl =  'http://dev.com/personal/web/workout/public';
 
-
-    console.log('Hello RestProvider Provider');
+    console.log('Hello ProfileRestProvider Provider');
   }
-    getUsers() {
-        return new Promise(resolve => {
-            this.http.get(this.apiUrl+'/users').subscribe(data => {
-                resolve(data);
-            }, err => {
-                console.log(err);
-            });
-        });
-    }
-
-    addUser(data) {
-      console.info(data);
-
+    loadProfile(data)
+    {
         return new Promise((resolve, reject) => {
-            this.http.post(this.apiUrl+'/users', JSON.stringify(data))
+            this.http.post(this.baseUrl+'/api/user', JSON.stringify(data))
                 .subscribe(res => {
                     resolve(res);
                     console.info('success',res);

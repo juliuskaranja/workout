@@ -12,10 +12,75 @@
 
 </ion-header>
 
+<ion-content>
+  <ion-list style="padding: auto">
 
-<ion-content padding>
+    <form [formGroup]="profileForm">
+      <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input type="text" formControlName="first_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Surname</ion-label>
+        <ion-input type="text" formControlName="surname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>DOB</ion-label>
+        <ion-datetime formControlName="dob" displayFormat="MM/DD/YYYY"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button full (click)="submitUserProfileForm()">Login </button>
+      </ion-item>
+
+      <ion-item>
+        <span (click)="goToRegisterUser()"><a>Register?</a></span>
+      </ion-item>
+    </form>
+
+
+    <!--<form (ngSubmit)="loginUser(login.value)" [formGroup]="login">
+      <ion-item>
+        <ion-label stacked>Username</ion-label>
+        <ion-input type="text" name="username" [ngModel]="user.username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password" name="password" [ngModel]="user.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <button type="submit" ion-button full >Login </button>
+      </ion-item>
+
+      <ion-item>
+        <span (click)="goToRegisterUser()"><a>Register?</a></span>
+      </ion-item>
+    </form>-->
+
+  </ion-list>
+</ion-content>
+
+
+
+<!--<ion-content padding>
 
   <ion-list>
+
+    <ion-item>
+      <ion-label fixed>First Name</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
 
     <ion-item>
       <ion-label fixed>Username</ion-label>
@@ -31,4 +96,4 @@
 
   </ion-list>
 
-</ion-content>
+</ion-content>-->

@@ -15,8 +15,8 @@ export class RegisterRestProvider {
   constructor(public http: HttpClient) {
     console.log('Hello RegisterRestProvider Provider');
 
-      this.baseUrl =  'http://julius.collegeassignment.net';
-      // this.baseUrl =  'http://dev.com/personal/web/workout/public';
+      // this.baseUrl =  'http://julius.collegeassignment.net';
+      this.baseUrl =  'http://dev.com/personal/web/workout/public';
   }
 
   registerUser(userData){
