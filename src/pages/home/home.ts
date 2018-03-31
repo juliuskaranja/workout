@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {NavController, PopoverController} from 'ionic-angular';
+import {ModalController, NavController, PopoverController} from 'ionic-angular';
 import {PopOverPage} from "../pop-over/pop-over";
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
 import {ListPostsProvidersProvider} from "../../providers/list-posts-providers/list-posts-providers";
+import {AddNewPostPage} from "../add-new-post/add-new-post";
 
 @Component({
   selector: 'page-home',
@@ -15,13 +16,14 @@ export class HomePage {
 
     posts: any;
     users: any;
-    user:any;
+    me:any;
 
   constructor(public navCtrl: NavController,
               public popCntr: PopoverController,
               public restProvider: RestProvider,
               public storage: Storage,
-              public listPosts: ListPostsProvidersProvider) {
+              public listPosts: ListPostsProvidersProvider,
+              public modal: ModalController) {
       //get user profile..
       this.getUserProfile();
 
@@ -38,8 +40,15 @@ export class HomePage {
     }
 
     getUserProfile(){
-      this.user = this.storage.get('user');
-      console.info('this is closer => ',this.user);
+
+        var user = (JSON.parse(localStorage.getItem('user')));
+
+
+        this.me = user.first_name + ' ' + user.surname;
+        console.info(user);
+        console.info(this.me);
+      // this.user = this.storage.get('user');
+      // console.info('this is closer => ',this.user);
     }
 
     getUsers() {
@@ -49,6 +58,14 @@ export class HomePage {
                 console.log(this.users);
             });
     }
+
+    addNewPost()
+    {
+        let modal = this.modal.create(AddNewPostPage);
+        modal.present();
+    }
+
+
     /*saveUser(){
       this.restProvider.addUser({ name: 'Julius', username: 'Karanja',
           email: 'kimsonjulius1@gmail.com', phone: '+254712782887',

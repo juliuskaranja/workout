@@ -56,15 +56,15 @@ export class LoginPage {
 
           this.presentToast(data['message']);
 
+
+
           if(data['status'] === 'ERROR')
             {
               return;
             }
 
-            this.storage.set('user',data['data']);
 
-          console.info(this.storage.get('user'));
-
+            localStorage.setItem('user',JSON.stringify(data['data']));
             this.navCtrl.setRoot(TabsPage);
       });
 

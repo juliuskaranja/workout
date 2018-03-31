@@ -23,6 +23,8 @@ import { RegisterRestProvider } from '../providers/register-rest/register-rest';
 import {IonicStorageModule} from "@ionic/storage";
 import { ProfileRestProvider } from '../providers/profile-rest/profile-rest';
 import { ListPostsProvidersProvider } from '../providers/list-posts-providers/list-posts-providers';
+import {AddNewPostPage} from "../pages/add-new-post/add-new-post";
+import {ShowMealModalPage} from "../pages/show-meal-modal/show-meal-modal";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ListPostsProvidersProvider } from '../providers/list-posts-providers/li
     ProfilePage,
     MealPage,
     ProfilePage,
+    AddNewPostPage,
+    ShowMealModalPage,
 
   ],
   imports: [
@@ -60,6 +64,9 @@ import { ListPostsProvidersProvider } from '../providers/list-posts-providers/li
     ProfilePage,
     MealPage,
     ProfilePage,
+    AddNewPostPage,
+    ShowMealModalPage,
+
 
   ],
   providers: [

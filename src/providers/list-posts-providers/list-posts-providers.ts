@@ -15,8 +15,8 @@ export class ListPostsProvidersProvider {
   constructor(public http: HttpClient) {
     console.log('Hello ListPostsProvidersProvider Provider');
 
-      // this.baseUrl =  'http://julius.collegeassignment.net';
-      this.baseUrl =  'http://dev.com/personal/web/workout/public';
+      this.baseUrl =  'http://julius.collegeassignment.net';
+      // this.baseUrl =  'http://dev.com/personal/web/workout/public';
   }
 
   loadPosts(){

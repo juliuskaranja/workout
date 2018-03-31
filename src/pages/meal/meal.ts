@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {ShowMealModalPage} from "../show-meal-modal/show-meal-modal";
 
 /**
  * Generated class for the MealPage page.
@@ -15,11 +16,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MealPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public modal: ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MealPage');
   }
+    showBreakFastMeal()
+    {
+      let data = {'during':'Break Fast','meal':'Tea, boiled eggs and Bread'};
+      this.showModal(data);
+    }
+    showLunchMeal()
+    {
+      let data = {'during':'Lunch','meal':'Rice and chicken'};
+      this.showModal(data);
+    }
+    showSupperMeal()
+    {
+      let data = {'during':'Supper','meal':'Fish '};
+      this.showModal(data);
+    }
 
+
+    showModal(data){
+
+      let modal = this.modal.create(ShowMealModalPage);
+      modal.present(data)
+
+    }
 }
