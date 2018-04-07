@@ -25,6 +25,9 @@ import { ProfileRestProvider } from '../providers/profile-rest/profile-rest';
 import { ListPostsProvidersProvider } from '../providers/list-posts-providers/list-posts-providers';
 import {AddNewPostPage} from "../pages/add-new-post/add-new-post";
 import {ShowMealModalPage} from "../pages/show-meal-modal/show-meal-modal";
+import { LoadMealPlanProvider } from '../providers/load-meal-plan/load-meal-plan';
+import { AddPostRestProvider } from '../providers/add-post-rest/add-post-rest';
+import { UpdateUserProfileProvider } from '../providers/update-user-profile/update-user-profile';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,9 @@ import {ShowMealModalPage} from "../pages/show-meal-modal/show-meal-modal";
     RegisterRestProvider,
     ProfileRestProvider,
     ListPostsProvidersProvider,
+    LoadMealPlanProvider,
+    AddPostRestProvider,
+    UpdateUserProfileProvider,
   ]
 })
 export class AppModule {}

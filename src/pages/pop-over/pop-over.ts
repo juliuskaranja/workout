@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProfilePage} from "../profile/profile";
+import {FormBuilder} from "@angular/forms";
 
 /**
  * Generated class for the PopOverPage page.
@@ -16,7 +17,11 @@ import {ProfilePage} from "../profile/profile";
 })
 export class PopOverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
+
+
   }
 
   ionViewDidLoad() {

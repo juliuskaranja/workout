@@ -2,35 +2,35 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
-  Generated class for the ListPostsProvidersProvider provider.
+  Generated class for the LoadMealPlanProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class ListPostsProvidersProvider {
+export class LoadMealPlanProvider {
 
-  baseUrl: any;
+  baseUrl : any;
 
   constructor(public http: HttpClient) {
-    console.log('Hello ListPostsProvidersProvider Provider');
+    console.log('Hello LoadMealPlanProvider Provider');
 
       this.baseUrl =  'http://julius.collegeassignment.net';
       // this.baseUrl =  'http://dev.com/personal/web/workout/public';
   }
 
-  loadPosts(){
-      return new Promise(resolve => {
+    loadMealPlan(mealType){
+        return new Promise(resolve => {
           var user = (JSON.parse(localStorage.getItem('user')));
 
           var userId = user.id;
 
-          this.http.get(this.baseUrl+'/api/list-posts?user_id='+userId).subscribe(data => {
-              resolve(data);
-          }, err => {
-              console.log(err);
-          });
-      });
-  }
+            this.http.get(this.baseUrl+'/api/get-meal-plan?user_id='+userId+'&meal_time='+mealType).subscribe(data => {
+                resolve(data);
+            }, err => {
+                console.log(err);
+            });
+        });
+    }
 
 }

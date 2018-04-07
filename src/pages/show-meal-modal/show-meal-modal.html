@@ -7,14 +7,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{during}}</ion-title>
+    <ion-title>{{mealType}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <p>{{meal}}</p>
+  <ion-content class="card-background-page">
+
+
+    <ion-card>
+      <img src="assets/imgs/meal.jpeg"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{mealPlan.name}}
+        </ion-card-title>
+        <p>
+          {{mealPlan.description}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <!--<ion-card>
+      <img src="assets/imgs/meal.jpeg"/>
+      <div class="card-title">Meal Of Choice</div>
+      <div class="card-subtitle">
+        Large options for this meal lskfdf jwejwenrjwe fweo
+      </div>
+    </ion-card>-->
+
+  </ion-content>
 
 </ion-content>

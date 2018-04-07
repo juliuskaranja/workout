@@ -15,7 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ShowMealModalPage {
 
+  mealPlan:any;
+  mealType: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    console.info(navParams.get('myData'));
+
+    this.mealPlan = navParams.get('myData')['data'];
+    this.mealType = navParams.get('myData')['mealType'];
 
   }
 

@@ -15,7 +15,25 @@
 
 <ion-content padding>
 
-  <img [src]="image" [hidden]="image==null" alt="">
+  <form [formGroup]="addPostForm">
+    <ion-item>
+      <!--<ion-label stacked>Username</ion-label>-->
+      <ion-textarea type="text" col="3" formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <!--<ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+-->
+    <ion-item>
+      <button ion-button full (click)="addPost()">Submit </button>
+    </ion-item>
+
+  </form>
+
+
+  <!--<img [src]="image" [hidden]="image==null" alt="">
   <ion-item>
     <button ion-button icon-left (click)="selectAPicture()">
       <ion-icon name="camera"></ion-icon>Select Image
@@ -29,7 +47,7 @@
 
   <ion-item>
     <button (click)="uploadPost()" color="primary">Add Post</button>
-  </ion-item>
+  </ion-item>-->
 
 
 </ion-content>

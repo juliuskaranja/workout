@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ImagePicker} from "@ionic-native/image-picker";
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {FormBuilder} from "@angular/forms";
+import {AddPostRestProvider} from "../../providers/add-post-rest/add-post-rest";
+import {HomePage} from "../home/home";
+import {TabsPage} from "../tabs/tabs";
+//import {ImagePicker} from "@ionic-native/image-picker";
 
 /**
  * Generated class for the AddNewPostPage page.
@@ -17,15 +21,29 @@ import {ImagePicker} from "@ionic-native/image-picker";
 export class AddNewPostPage {
 
     image: any;
+    addPostForm: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              public imagePicker: ImagePicker) {
+  constructor(public navCtrl: NavController,
+              public addPostRest: AddPostRestProvider,
+              public toastCntr: ToastController,
+              public formBuilder: FormBuilder, public navParams: NavParams/*,
+              public imagePicker: ImagePicker*/) {
+
+
+      let user = (JSON.parse(localStorage.getItem('user')));
+      let userId = user.id;
+
+      this.addPostForm = formBuilder.group({
+          location_name: ['kasarani'],
+          description: [''],
+          user_id: [userId],
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddNewPostPage');
   }
-    selectAPicture(){
+    /*selectAPicture(){
       let options = {'maximumImagesCount':1};
         this.imagePicker.getPictures(options).then((results) => {
             for (var i = 0; i < results.length; i++) {
@@ -35,9 +53,27 @@ export class AddNewPostPage {
         }, (err) => { });
 
     }
+*/
+    presentToast(message) {
+        let toast = this.toastCntr.create({
+            message: message,
+            duration: 3000,
+            position: 'middle'
+        });
 
-    uploadPost(){
-      //
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
+    }
+
+
+    addPost(){
+        this.addPostRest.PushNewPost(this.addPostForm.value);
+        this.presentToast('successfully posted.');
+        this.navCtrl.setRoot(TabsPage);
+
     }
 
 }

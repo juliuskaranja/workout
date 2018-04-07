@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
 import {ShowMealModalPage} from "../show-meal-modal/show-meal-modal";
+import {LoadMealPlanProvider} from "../../providers/load-meal-plan/load-meal-plan";
 
 /**
  * Generated class for the MealPage page.
@@ -16,34 +17,48 @@ import {ShowMealModalPage} from "../show-meal-modal/show-meal-modal";
 })
 export class MealPage {
 
+    mealPlan:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public modal: ModalController) {
+              public modal: ModalController, public listMeal: LoadMealPlanProvider) {
+    /*this.loadMeal();*/
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MealPage');
   }
+
+    loadMeal(mealType)
+    {
+      this.listMeal.loadMealPlan(mealType).then(data=>{
+        this.mealPlan = data;
+
+          //let data = {'during':'Break Fast','meal':'Tea, boiled eggs and Bread'};
+          this.showModal(this.mealPlan,mealType);
+      });
+
+    }
     showBreakFastMeal()
     {
-      let data = {'during':'Break Fast','meal':'Tea, boiled eggs and Bread'};
-      this.showModal(data);
+      this.loadMeal('breakfast');
+
     }
     showLunchMeal()
     {
-      let data = {'during':'Lunch','meal':'Rice and chicken'};
-      this.showModal(data);
+        this.loadMeal('lunch');
+
     }
     showSupperMeal()
     {
-      let data = {'during':'Supper','meal':'Fish '};
-      this.showModal(data);
+        this.loadMeal('supper');
     }
 
 
-    showModal(data){
+    showModal(data,mealType){
 
-      let modal = this.modal.create(ShowMealModalPage);
-      modal.present(data)
+      let myData = {'data' : data, 'mealType' : mealType};
+      let modal = this.modal.create(ShowMealModalPage,{'myData':myData});
+      modal.present()
 
     }
 }
