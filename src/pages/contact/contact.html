@@ -13,11 +13,31 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>What is your goal?</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
-</ion-content>
+
+  <ion-content padding>
+
+    <h2>Goals</h2>
+
+
+    <ion-list>
+      <button ion-item color="dark" (click)="showGainMuscle()">
+        Gain Muscle
+      </button>
+    </ion-list>
+
+
+    <ion-list>
+      <button ion-item color="dark" (click)="showLossWeight()">
+        Loss Weight
+      </button>
+    </ion-list>
+
+
+    <ion-list>
+      <button ion-item color="dark" (click)="showStayFit()">
+        Maintain / stay fit
+      </button>
+    </ion-list>
+
+  </ion-content>
+

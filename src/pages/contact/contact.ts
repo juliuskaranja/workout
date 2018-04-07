@@ -11,4 +11,20 @@ export class ContactPage {
 
   }
 
+    showGainMuscle()
+    {
+      alert('closer');
+    }
+
+    showLossWeight()
+    {
+      alert('closer');
+    }
+
+    showStayFit(){
+
+      alert('closer');
+    }
+
+
 }
