@@ -58,7 +58,7 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-sqlite-storage": {},
+//      "cordova-sqlite-storage": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyDHGJiFK1XtfW62ihMaHvVoACq44MXt3BY",
         "PLAY_SERVICES_VERSION": "11.8.0",
