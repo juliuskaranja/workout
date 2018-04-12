@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {ShowMealModalPage} from "../show-meal-modal/show-meal-modal";
 import {LoadMealPlanProvider} from "../../providers/load-meal-plan/load-meal-plan";
+import {PopOverPage} from "../pop-over/pop-over";
 
 /**
  * Generated class for the MealPage page.
@@ -20,7 +21,9 @@ export class MealPage {
     mealPlan:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public modal: ModalController, public listMeal: LoadMealPlanProvider) {
+              public modal: ModalController,
+              public listMeal: LoadMealPlanProvider,
+              public popCntr:PopoverController) {
     /*this.loadMeal();*/
   }
 
@@ -51,6 +54,15 @@ export class MealPage {
     showSupperMeal()
     {
         this.loadMeal('supper');
+    }
+
+
+    openSideMenu(myEvent)
+    {
+        let popover = this.popCntr.create(PopOverPage);
+        popover.present({
+            ev: myEvent
+        });
     }
 
 

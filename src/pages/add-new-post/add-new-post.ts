@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {FormBuilder} from "@angular/forms";
 import {AddPostRestProvider} from "../../providers/add-post-rest/add-post-rest";
-import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
-//import {ImagePicker} from "@ionic-native/image-picker";
+import {GeocodingServiceProvider} from '../../providers/geocoding-service/geocoding-service';
+
 
 /**
  * Generated class for the AddNewPostPage page.
@@ -26,13 +26,29 @@ export class AddNewPostPage {
   constructor(public navCtrl: NavController,
               public addPostRest: AddPostRestProvider,
               public toastCntr: ToastController,
-              public formBuilder: FormBuilder, public navParams: NavParams/*,
+              public formBuilder: FormBuilder,
+              private geo: GeocodingServiceProvider,
+              public navParams: NavParams/*,
               public imagePicker: ImagePicker*/) {
 
 
       let user = (JSON.parse(localStorage.getItem('user')));
       let userId = user.id;
 
+      /*
+      this.geo.getCurrentLocation().subscribe(loc => {
+          console.log(JSON.stringify(loc));
+          this.lat = loc.latitude;
+          this.lng = loc.longitude;
+          this.loadMap().then(map => {
+              this.map = map;
+              this.addMarker();
+          });
+          this.geo.geocode(loc.address).subscribe(pos => {
+              // console.log(JSON.stringify(pos.address));
+          });
+      });
+*/
       this.addPostForm = formBuilder.group({
           location_name: ['kasarani'],
           description: [''],

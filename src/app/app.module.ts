@@ -28,6 +28,17 @@ import {ShowMealModalPage} from "../pages/show-meal-modal/show-meal-modal";
 import { LoadMealPlanProvider } from '../providers/load-meal-plan/load-meal-plan';
 import { AddPostRestProvider } from '../providers/add-post-rest/add-post-rest';
 import { UpdateUserProfileProvider } from '../providers/update-user-profile/update-user-profile';
+import {SettingPage} from "../pages/setting/setting";
+import {UpdatePasswordPage} from "../pages/update-password/update-password";
+import { UpdatePasswordProvider } from '../providers/update-password/update-password';
+import { DeleteAccountProvider } from '../providers/delete-account/delete-account';
+import { Geolocation } from "@ionic-native/geolocation";
+import { GeocodingServiceProvider } from '../providers/geocoding-service/geocoding-service';
+import {PrivateMessagePage} from "../pages/private-message/private-message";
+import { LoadPrivateContactProvider } from '../providers/load-private-contact/load-private-contact';
+import { LoadPrivateContactMessagesProvider } from '../providers/load-private-contact-messages/load-private-contact-messages';
+import {ShowContactMessagesPage} from "../pages/show-contact-messages/show-contact-messages";
+import { LoadGoalsProvider } from '../providers/load-goals/load-goals';
 
 @NgModule({
   declarations: [
@@ -44,6 +55,10 @@ import { UpdateUserProfileProvider } from '../providers/update-user-profile/upda
     ProfilePage,
     AddNewPostPage,
     ShowMealModalPage,
+    SettingPage,
+    UpdatePasswordPage,
+    PrivateMessagePage,
+    ShowContactMessagesPage
 
   ],
   imports: [
@@ -69,6 +84,10 @@ import { UpdateUserProfileProvider } from '../providers/update-user-profile/upda
     ProfilePage,
     AddNewPostPage,
     ShowMealModalPage,
+    SettingPage,
+    UpdatePasswordPage,
+    PrivateMessagePage,
+    ShowContactMessagesPage
 
 
   ],
@@ -85,6 +104,13 @@ import { UpdateUserProfileProvider } from '../providers/update-user-profile/upda
     LoadMealPlanProvider,
     AddPostRestProvider,
     UpdateUserProfileProvider,
+    UpdatePasswordProvider,
+    DeleteAccountProvider,
+    Geolocation,
+    GeocodingServiceProvider,
+    LoadPrivateContactProvider,
+    LoadPrivateContactMessagesProvider,
+    LoadGoalsProvider
   ]
 })
 export class AppModule {}

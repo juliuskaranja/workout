@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons left>
-      <button ion-button icon-only (click)="openSideMenu()">
+      <button ion-button icon-only (click)="openSideMenu($event)">
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,5 +14,6 @@
 
 <ion-content padding>
 
-  geo location map pointing the location of devices
+  <div id="map2"></div>
+
 </ion-content>

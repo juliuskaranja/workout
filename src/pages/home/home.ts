@@ -41,7 +41,7 @@ export class HomePage {
 
     getUserProfile(){
 
-        var user = (JSON.parse(localStorage.getItem('user')));
+        let user = (JSON.parse(localStorage.getItem('user')));
 
 
         this.me = user.first_name + ' ' + user.surname;
