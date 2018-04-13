@@ -3,6 +3,7 @@ import {NavController, PopoverController} from 'ionic-angular';
 
 import {GeocodingServiceProvider} from '../../providers/geocoding-service/geocoding-service';
 import {PopOverPage} from "../pop-over/pop-over";
+import {LoadPrivateContactProvider} from "../../providers/load-private-contact/load-private-contact";
 
 
 declare var GMaps;
@@ -20,7 +21,8 @@ export class AboutPage {
     lng: number;
 
   constructor(public navCtrl: NavController, private geo: GeocodingServiceProvider,
-              public popCntr:PopoverController) {
+              public popCntr:PopoverController,
+              public loadContactProvider:LoadPrivateContactProvider) {
 
   }
   ionViewDidLoad(){
@@ -50,26 +52,38 @@ export class AboutPage {
                 width: '400px',
                 height: '400px',
                 zoom: 5,
-                lat: -13.043333,
-                lng: -76.028333
-                /*lat: this.lat,
-                lng: this.lng*/
+                /*lat: -13.043333,
+                lng: -76.028333*/
+                lat: this.lat,
+                lng: this.lng
             });
             resolve(map);
         });
     }
 
     addMarker() {
-        this.map.addMarker({
-            lat: -13.043333,
-            lng: -76.028333,
-            title: 'Julius',
-            infoWindow: {
-                content: '<p>Julius is here</p>'
+
+        this.loadContactProvider.loadPrivateContacts().then(data=>{
+            for (let i=0;i<data['users'].length;i++)
+            {
+                console.info('Julius=> ',data['users'][i]['lat'],data['users'][i]['lon']);
+
+                this.map.addMarker({
+                    lat: data['users'][i]['lat'],
+                    lng: data['users'][i]['lon'],
+                    title: data['users'][i]['first_name'] +' '+ data['users'][i]['username'],
+                    infoWindow: {
+                        content: '<p>'+data['users'][i]['first_name']+'</p>' +
+                        '<p>is '+data['users'][i]['height']+'m tall</p>'+
+                        '<p>weighs '+data['users'][i]['weight']+'</p>'+
+                        '<p>'+data['users'][i]['gender']+'</p>'
+                    }
+                });
             }
         });
 
-        this.map.addMarker({
+
+        /*this.map.addMarker({
             lat: -12.043333,
             lng: -77.028333,
             title: 'Peter',
@@ -85,7 +99,7 @@ export class AboutPage {
             title: 'Risper',
             id: 'marker',
             infoWindow: {
-                content: '<p>Risper is here</p>'
+                content: '<p>Risper</p>'
             }
         });
 
@@ -97,7 +111,7 @@ export class AboutPage {
             infoWindow: {
                 content: '<p>Mary is here</p>'
             }
-        });
+        });*/
     }
 
 

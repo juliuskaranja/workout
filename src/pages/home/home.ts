@@ -5,6 +5,8 @@ import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
 import {ListPostsProvidersProvider} from "../../providers/list-posts-providers/list-posts-providers";
 import {AddNewPostPage} from "../add-new-post/add-new-post";
+import {PersonalProfilePage} from "../personal-profile/personal-profile";
+import {ProfileRestProvider} from "../../providers/profile-rest/profile-rest";
 
 @Component({
   selector: 'page-home',
@@ -23,7 +25,8 @@ export class HomePage {
               public restProvider: RestProvider,
               public storage: Storage,
               public listPosts: ListPostsProvidersProvider,
-              public modal: ModalController) {
+              public modal: ModalController,
+              public personalProfile:ProfileRestProvider) {
       //get user profile..
       this.getUserProfile();
 
@@ -80,6 +83,13 @@ export class HomePage {
         popover.present({
             ev: myEvent
         });
+    }
+
+    showUserProfile(user_id)
+    {
+        this.personalProfile.loadProfile({'user_id':user_id}).then(data=>{
+            this.navCtrl.push(PersonalProfilePage,{'user':data['data']})
+        })
     }
 
 }

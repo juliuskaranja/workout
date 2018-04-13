@@ -39,6 +39,9 @@ import { LoadPrivateContactProvider } from '../providers/load-private-contact/lo
 import { LoadPrivateContactMessagesProvider } from '../providers/load-private-contact-messages/load-private-contact-messages';
 import {ShowContactMessagesPage} from "../pages/show-contact-messages/show-contact-messages";
 import { LoadGoalsProvider } from '../providers/load-goals/load-goals';
+import {PersonalProfilePage} from "../pages/personal-profile/personal-profile";
+import { SendMessageProvider } from '../providers/send-message/send-message';
+import { ShowGainMuscleGuideProvider } from '../providers/show-gain-muscle-guide/show-gain-muscle-guide';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import { LoadGoalsProvider } from '../providers/load-goals/load-goals';
     SettingPage,
     UpdatePasswordPage,
     PrivateMessagePage,
-    ShowContactMessagesPage
+    PersonalProfilePage,
+    ShowContactMessagesPage,
 
   ],
   imports: [
@@ -87,7 +91,8 @@ import { LoadGoalsProvider } from '../providers/load-goals/load-goals';
     SettingPage,
     UpdatePasswordPage,
     PrivateMessagePage,
-    ShowContactMessagesPage
+    PersonalProfilePage,
+    ShowContactMessagesPage,
 
 
   ],
@@ -110,7 +115,9 @@ import { LoadGoalsProvider } from '../providers/load-goals/load-goals';
     GeocodingServiceProvider,
     LoadPrivateContactProvider,
     LoadPrivateContactMessagesProvider,
-    LoadGoalsProvider
+    LoadGoalsProvider,
+    SendMessageProvider,
+    ShowGainMuscleGuideProvider
   ]
 })
 export class AppModule {}

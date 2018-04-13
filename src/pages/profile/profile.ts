@@ -39,6 +39,7 @@ export class ProfilePage {
 
       let user = (JSON.parse(localStorage.getItem('user')));
 
+
       this.profileForm = formBuilder.group({
           user_id: [user.id],
           username: [user.username],
@@ -46,6 +47,7 @@ export class ProfilePage {
           surname: [user.surname],
           email: [user.email],
           dob: [user.dob],
+          coordinate: [user.coordinate],
       });
 
   }

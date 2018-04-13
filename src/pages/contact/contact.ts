@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AlertController, NavController, PopoverController} from 'ionic-angular';
 import {PopOverPage} from "../pop-over/pop-over";
 import {LoadGoalsProvider} from "../../providers/load-goals/load-goals";
+import {ShowGainMuscleGuideProvider} from "../../providers/show-gain-muscle-guide/show-gain-muscle-guide";
 
 @Component({
   selector: 'page-contact',
@@ -13,7 +14,8 @@ export class ContactPage {
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               public popCntr:PopoverController,
-              public loadGoalsProv: LoadGoalsProvider) {
+              public loadGoalsProv: LoadGoalsProvider,
+              public gainMuscleProvider:ShowGainMuscleGuideProvider) {
 
       this.loadGoals();
 
@@ -52,6 +54,17 @@ export class ContactPage {
         this.loadGoalsProv.loadPersonalGoals(user['id']).then(data=>{
             console.info(data);
         });
+    }
+
+    showGainMuscle()
+    {
+        let user = JSON.parse(localStorage.getItem('user'));
+
+        /*this.gainMuscleProvider.loadGainMuscleGuide({user_id:user.id}).then(data=>{
+
+        })*/
+
+
     }
 
     openSideMenu(myEvent)

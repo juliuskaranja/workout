@@ -4,6 +4,8 @@ import {ProfilePage} from "../profile/profile";
 import {FormBuilder} from "@angular/forms";
 import {SettingPage} from "../setting/setting";
 import {PrivateMessagePage} from "../private-message/private-message";
+import {ProfileRestProvider} from "../../providers/profile-rest/profile-rest";
+import {PersonalProfilePage} from "../personal-profile/personal-profile";
 
 /**
  * Generated class for the PopOverPage page.
@@ -19,9 +21,14 @@ import {PrivateMessagePage} from "../private-message/private-message";
 })
 export class PopOverPage {
 
+    user_id: any;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public personalProfile:ProfileRestProvider) {
+      let user = (JSON.parse(localStorage.getItem('user')));
+
+    this.user_id = user['id'];
 
 
   }
@@ -29,6 +36,13 @@ export class PopOverPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PopOverPage');
   }
+
+    viewPersonalProfile(user_id)
+    {
+      this.personalProfile.loadProfile({'user_id':user_id}).then(data=>{
+        this.navCtrl.push(PersonalProfilePage,{'user':data['data']})
+      })
+    }
 
     OpenProfilePage()
     {

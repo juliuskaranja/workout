@@ -22,3 +22,16 @@
   </ion-list>
 
 </ion-content>
+<ion-footer>
+  <ion-list>
+    <form [formGroup]="chatForm">
+      <ion-item>
+        <ion-label stacked>Message</ion-label>
+        <ion-input type="email" formControlName="message"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+  <div padding (click)="sendChatMessage()">
+    <button full>Send</button>
+  </div>
+</ion-footer>

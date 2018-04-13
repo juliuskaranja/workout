@@ -34,8 +34,8 @@ export class LoginPage {
     this.user = [];
 
       this.loginForm = formBuilder.group({
-        username: [''],
-        password: [''],
+        username: ['petermediax@gmail.com'],
+        password: ['password'],
       });
   }
 
