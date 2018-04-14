@@ -6,6 +6,7 @@ import {SettingPage} from "../setting/setting";
 import {PrivateMessagePage} from "../private-message/private-message";
 import {ProfileRestProvider} from "../../providers/profile-rest/profile-rest";
 import {PersonalProfilePage} from "../personal-profile/personal-profile";
+import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the PopOverPage page.
@@ -59,6 +60,13 @@ export class PopOverPage {
     OpenSettingsPage()
     {
       this.navCtrl.push(SettingPage);
+    }
+
+    logout()
+    {
+      localStorage.removeItem('user');
+
+      this.navCtrl.setRoot(LoginPage);
     }
 
 }

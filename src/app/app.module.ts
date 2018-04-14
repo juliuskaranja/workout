@@ -42,6 +42,7 @@ import { LoadGoalsProvider } from '../providers/load-goals/load-goals';
 import {PersonalProfilePage} from "../pages/personal-profile/personal-profile";
 import { SendMessageProvider } from '../providers/send-message/send-message';
 import { ShowGainMuscleGuideProvider } from '../providers/show-gain-muscle-guide/show-gain-muscle-guide';
+import {GoalPage} from "../pages/goal/goal";
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ShowGainMuscleGuideProvider } from '../providers/show-gain-muscle-guide
     SettingPage,
     UpdatePasswordPage,
     PrivateMessagePage,
+    GoalPage,
     PersonalProfilePage,
     ShowContactMessagesPage,
 
@@ -91,6 +93,7 @@ import { ShowGainMuscleGuideProvider } from '../providers/show-gain-muscle-guide
     SettingPage,
     UpdatePasswordPage,
     PrivateMessagePage,
+    GoalPage,
     PersonalProfilePage,
     ShowContactMessagesPage,
 

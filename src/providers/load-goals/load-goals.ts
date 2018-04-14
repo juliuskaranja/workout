@@ -15,11 +15,24 @@ export class LoadGoalsProvider {
   constructor(public http: HttpClient) {
     console.log('Hello LoadGoalsProvider Provider');
 
-      // this.baseUrl =  'http://julius.collegeassignment.net';
-      this.baseUrl =  'http://dev.com/personal/web/workout/public';
+      this.baseUrl =  'http://julius.collegeassignment.net';
+      // this.baseUrl =  'http://dev.com/personal/web/workout/public';
 
 
   }
+
+    loadGainMuscleGuide(data)
+    {
+        return new Promise((resolve, reject) => {
+            this.http.post(this.baseUrl+'/api/load-user-goals', JSON.stringify(data))
+                .subscribe(res => {
+                    resolve(res);
+                }, (err) => {
+                    reject(err);
+                    console.error('error',err);
+                });
+        });
+    }
 
 
   loadPersonalGoals(user_id)

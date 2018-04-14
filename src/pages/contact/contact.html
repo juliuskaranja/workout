@@ -17,15 +17,6 @@
   <ion-content padding>
 
     <h2>Goals</h2>
-    <!--load goals and edit them-->
-
-    <ion-list *ngFor="let goal of goals">
-      <button ion-item color="dark" (click)="editWorkout(goal.id)">
-        {{goal.name}}
-      </button>
-    </ion-list>
-
-
 
     <ion-list>
       <button ion-item color="dark" (click)="showGainMuscle()">

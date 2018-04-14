@@ -1,0 +1,30 @@
+<!--
+  Generated template for the GoalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{target}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let goal of goals">
+    <img src="http://julius.collegeassignment.net/{{goal['image']}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{target}}
+      </ion-card-title>
+      <p>
+        {{goal['guide']}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
