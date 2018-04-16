@@ -33,15 +33,16 @@ export class AboutPage {
     ngAfterViewInit() {
         this.geo.getCurrentLocation().subscribe(loc => {
 
-            this.lat = loc.latitude;
-            this.lng = loc.longitude;
+            this.lat = (loc['latitude']);
+            this.lng = (loc['longitude']);
+
             this.loadMap().then(map => {
                 this.map = map;
                 this.addMarker();
             });
-            this.geo.geocode(loc.address).subscribe(pos => {
-                // console.log(JSON.stringify(pos.address));
-            });
+            // this.geo.geocode(loc.address).subscribe(pos => {
+            //     console.log(JSON.stringify(pos.address));
+            // });
         });
 
     }
