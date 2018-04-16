@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+// import {GMaps} from "../about/about";
+import {GeocodingServiceProvider} from "../../providers/geocoding-service/geocoding-service";
+
+
 
 /**
  * Generated class for the PersonalProfilePage page.
@@ -16,12 +20,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PersonalProfilePage {
 
   user:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  location:any;
+    lat: number;
+    lng: number;
+    map: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public geo: GeocodingServiceProvider) {
     this.user = this.navParams.get('user');
+      this.location = this.geo.getCoordinateForCurrentLocation();
+      console.info(this.location);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PersonalProfilePage');
   }
+
 
 }

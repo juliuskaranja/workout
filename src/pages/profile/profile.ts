@@ -4,7 +4,12 @@ import {ProfileRestProvider} from "../../providers/profile-rest/profile-rest";
 import {TabsPage} from "../tabs/tabs";
 import {FormBuilder} from "@angular/forms";
 import {UpdateUserProfileProvider} from "../../providers/update-user-profile/update-user-profile";
-import {HomePage} from "../home/home";
+// import {HomePage} from "../home/home";
+// import {GMaps} from "../personal-profile/personal-profile";
+import {GeocodingServiceProvider} from "../../providers/geocoding-service/geocoding-service";
+
+declare var GMaps;
+
 
 /**
  * Generated class for the ProfilePage page.
@@ -26,6 +31,9 @@ export class ProfilePage {
   surname: any;
   email: any;
   dob: any;
+  lat: number;
+  lng: number;
+    map:any;
 
     profileForm:any;
 
@@ -33,7 +41,8 @@ export class ProfilePage {
               public formBuilder:FormBuilder,
               public updateProfile:UpdateUserProfileProvider,
               public profileProvider: ProfileRestProvider,
-              public toast: ToastController) {
+              public toast: ToastController,
+              public geo:GeocodingServiceProvider) {
     this.loadProfile({'user_id':1});
 
 
@@ -47,7 +56,7 @@ export class ProfilePage {
           surname: [user.surname],
           email: [user.email],
           dob: [user.dob],
-          coordinate: [user.coordinate],
+          // coordinate: [user.coordinate],
       });
 
   }
@@ -55,6 +64,8 @@ export class ProfilePage {
     submitUserProfileForm(){
 
         let data = (this.profileForm.value);
+        data['coordinate'] = this.lat.toString()+','+this.lng.toString();
+        console.info(this.lat.toString()+','+this.lng.toString());
 
         this.updateProfile.updateProfile(data);
 
@@ -105,4 +116,54 @@ export class ProfilePage {
         toast.present();
 
     }
+
+    ngAfterViewInit() {
+        this.geo.getCurrentLocation().subscribe(loc => {
+
+            console.info(loc);
+            console.info(loc['latitude']);
+            console.info(loc['longitude']);
+
+            this.lat = loc['latitude'];
+            this.lng = loc['longitude'];
+            this.loadMap().then(map => {
+                this.map = map;
+                this.addMarker();
+            });
+            // this.geo.geocode(loc.address).subscribe(pos => {
+            // console.log(JSON.stringify(pos.address));
+            // });
+        });
+
+    }
+
+    loadMap() {
+        return new Promise(resolve => {
+
+            let map = new GMaps({
+                div: '#myMap',
+                width: '400px',
+                height: '400px',
+                zoom: 2,/*
+                lat: -13.043333,
+                lng: -76.028333,*/
+                lat: this.lat,
+                lng: this.lng,
+            });
+            resolve(map);
+        });
+    }
+
+    addMarker() {
+        this.map.addMarker({
+            lat: this.lat,
+            lng: this.lng,
+            title: 'my location',
+            infoWindow: {
+                content: '<p>Current Geo-location..</p>'
+            }
+        });
+    }
+
+
 }

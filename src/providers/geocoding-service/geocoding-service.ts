@@ -45,7 +45,8 @@ export class GeocodingServiceProvider {
             });
     }
 
-    getCurrentLocation() {
+    getCoordinateForCurrentLocation()
+    {
         return this.http
             .get('http://ipv4.myexternalip.com/json')
             // .map(res => res.json().ip)
@@ -62,6 +63,37 @@ export class GeocodingServiceProvider {
                 // location.longitude = result.longitude;
 
                 return location;
+            });
+
+
+        /*return this.http
+            .get('http://ipv4.myexternalip.com/json')
+            .flatMap(ip => this.http.get('http://freegeoip.net/json/' /!*+ ip*!/))
+            .map(result => {
+                console.info('this =>',result);
+                return result;
+            })*/
+
+    }
+
+    getCurrentLocation() {
+        return this.http
+            .get('http://ipv4.myexternalip.com/json')
+            // .map(res => res.json().ip)
+            .flatMap(ip => this.http.get('http://freegeoip.net/json/' /*+ ip*/))
+            // .map((res: Response) => res.json())
+            .map(result => {
+
+                console.info(result);
+
+                let location = new Location();
+                console.log(JSON.stringify(result));
+                // location.address = result.city + ', ' + result.region_code + ' ' + result.zip_code + ', ' + result.country_code;
+                // location.latitude = result.latitude;
+                // location.longitude = result.longitude;
+
+                return result;
+                // return location;
             });
     }
 

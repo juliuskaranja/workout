@@ -32,7 +32,7 @@ export class AboutPage {
 
     ngAfterViewInit() {
         this.geo.getCurrentLocation().subscribe(loc => {
-            console.log(JSON.stringify(loc));
+
             this.lat = loc.latitude;
             this.lng = loc.longitude;
             this.loadMap().then(map => {
@@ -47,15 +47,16 @@ export class AboutPage {
     }
     loadMap() {
         return new Promise(resolve => {
+
             let map = new GMaps({
                 div: '#map2',
                 width: '400px',
                 height: '400px',
-                zoom: 5,
-                /*lat: -13.043333,
-                lng: -76.028333*/
-                lat: this.lat,
-                lng: this.lng
+                zoom: 2,
+                lat: -13.043333,
+                lng: -76.028333
+                /*lat: this.lat,
+                lng: this.lng*/
             });
             resolve(map);
         });
@@ -66,7 +67,6 @@ export class AboutPage {
         this.loadContactProvider.loadPrivateContacts().then(data=>{
             for (let i=0;i<data['users'].length;i++)
             {
-                console.info('Julius=> ',data['users'][i]['lat'],data['users'][i]['lon']);
 
                 this.map.addMarker({
                     lat: data['users'][i]['lat'],
